@@ -3,123 +3,54 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Leo Zhu is a Data Science undergraduate at the University of British Columbia researching generative models, efficient inference, and model evaluation.">
-  <meta name="theme-color" content="#fafbf7">
+  <meta name="description" content="Leo Zhu is a Data Science undergraduate at UBC working on generative models, inference-time compute, and LLM evaluation.">
+  <meta name="theme-color" content="#ffffff">
   <link rel="canonical" href="https://leo-lj-zhu.github.io/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="preload" href="assets/fonts/instrument-serif.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
   <link rel="stylesheet" href="style.css">
-  <title>Leo Zhu | Machine Learning Research</title>
+  <title>Leo Zhu</title>
 </head>
-<body id="top">
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="header">
-    <div class="shell header-inner">
-      <a class="wordmark" href="#top">Leo Zhu</a>
-      <nav aria-label="Main navigation">
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" tabindex="-1">
-    <section class="shell hero" aria-labelledby="intro-title">
-      <div class="hero-copy">
-        <p class="eyebrow affiliation">University of British Columbia</p>
-        <h1 id="intro-title">Leo Zhu</h1>
-        <p class="role">Undergraduate machine learning researcher</p>
-        <p class="intro">I’m a Data Science undergraduate at UBC. I study how generative models can use computation more effectively at inference time, and how to evaluate their reliability in practice.</p>
-        <div class="hero-links">
-          <a class="button" href="cv/Leo_Zhu_CV.pdf">Curriculum vitae <span class="file-type">(PDF)</span></a>
-          <a href="mailto:leoljzhu@student.ubc.ca">Email</a>
-          <a href="https://github.com/leo-lj-zhu">GitHub</a>
-        </div>
-      </div>
-      <figure class="hero-figure">
-        <img src="assets/denoising-path.webp" width="1000" height="740" alt="A dotted path moves from high noise on the outer contours to low noise near the center.">
-        <figcaption><span>Denoising trajectory</span><span>Conceptual illustration</span></figcaption>
-      </figure>
-    </section>
-
-    <section class="research" id="research" aria-labelledby="research-title">
-      <div class="shell research-inner">
-        <h2 id="research-title">Research interests</h2>
-        <ul class="interests" role="list">
-          <li>
-            <h3>Generative modeling</h3>
-            <p>Diffusion transformers for image and video generation, and learned surrogates for scientific simulation.</p>
-          </li>
-          <li>
-            <h3>Efficient inference</h3>
-            <p>Recurrent computation, activation caching, and adapting compute across denoising steps.</p>
-          </li>
-          <li>
-            <h3>Model evaluation</h3>
-            <p>How language models reason, use tools, and ground their answers in evidence.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="shell work-section" id="publications" aria-labelledby="publications-title">
-      <h2 id="publications-title">Selected publications</h2>
-      <div class="entries">
-        <article class="entry">
-          <p class="entry-meta">2026 <span>·</span> NeurIPS Sim2Science Workshop</p>
-          <h3>A Quantum-Assisted Surrogate for ATLAS Calorimeter Showers</h3>
-          <p class="authors"><strong>Leo Zhu</strong>, J. Toledo, H. Jia, E. Paquet, R. G. Melko, C. W. Gay, G. Fox, M. Swiatlowski, W. T. Fedorko</p>
-          <p>A generative model for simulating particle showers in the ATLAS calorimeter, with a latent prior sampled on a quantum annealer.</p>
-          <a href="https://atlas.web.cern.ch/Atlas/GROUPS/PHYSICS/PLOTS/SIMU-2026-15/">ATLAS public results</a>
-        </article>
-        <article class="entry">
-          <p class="entry-meta">2025 <span>·</span> UBC Science One</p>
-          <h3>The Intermediate Axis Theorem: A Model for the Period and a Phenomenal Explanation</h3>
-          <p class="authors"><strong>Leo Zhu</strong> and Felix Bubbar <span>(equal contribution)</span></p>
-          <p>A model for how often a rigid body flips when rotated about its intermediate axis, tested with gyroscope measurements.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="shell work-section" id="projects" aria-labelledby="projects-title">
-      <h2 id="projects-title">Selected projects</h2>
-      <div class="entries">
-        <article class="entry">
-          <p class="entry-meta">Vamana AI <span>·</span> Ongoing research</p>
-          <h3>Efficient diffusion transformers</h3>
-          <p>I study how to adjust inference compute across denoising steps to improve the quality of image and video generation.</p>
-        </article>
-        <article class="entry">
-          <p class="entry-meta">ReSeSS Lab, UBC <span>·</span> Ongoing research</p>
-          <h3>Evaluating LLMs for legal research</h3>
-          <p>I build evaluations for open-ended legal questions that check whether models retrieve the right cases and whether the sources support their claims.</p>
-          <a href="https://people.ece.ubc.ca/~mjulia/ReSeSS.html">ReSeSS Lab</a>
-        </article>
-        <article class="entry">
-          <p class="entry-meta">UBC Cloud Innovation Centre <span>·</span> 2025 hackathon winner</p>
-          <h3>Polaris</h3>
-          <p>A career exploration prototype that uses retrieval-augmented generation to connect a person’s experience and interests to occupations in O*NET.</p>
-          <a href="https://cic.ubc.ca/2025/09/04/event-recap-the-ubc-cic-summer-genai-hackathon-2025/">UBC hackathon recap</a>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer id="contact" aria-labelledby="contact-title">
-    <div class="shell footer-inner">
-      <div>
-        <h2 id="contact-title">Get in touch</h2>
-        <p>University of British Columbia · Vancouver, BC</p>
-      </div>
-      <address>
-        <a href="mailto:leoljzhu@student.ubc.ca">leoljzhu@student.ubc.ca</a>
+<body>
+  <main class="page">
+    <header class="intro">
+      <h1>Leo Zhu</h1>
+      <p>Data Science undergraduate at the University of British Columbia. I work on generative models and inference-time compute, and on evaluating language models.</p>
+      <nav class="links" aria-label="Links">
+        <a href="cv/">CV</a>
+        <a href="mailto:leoljzhu@student.ubc.ca">Email</a>
         <a href="https://github.com/leo-lj-zhu">GitHub</a>
-        <a href="cv/Leo_Zhu_CV.pdf">CV (PDF)</a>
-      </address>
-    </div>
-  </footer>
+      </nav>
+    </header>
+
+    <section aria-labelledby="research">
+      <h2 id="research">Research</h2>
+      <ul class="list">
+        <li><span class="what">Learning to loop diffusion transformers</span><span class="where">Vamana AI</span></li>
+        <li><span class="what">Evaluating LLMs and improving harnesses for open-ended legal research</span><span class="where">ReSeSS Lab, UBC</span></li>
+        <li><span class="what">Clinical NLP and LLMs for lung donor decision making</span><span class="where">University Health Network</span></li>
+        <li><span class="what">Quantum-assisted calorimeter surrogates for ATLAS</span><span class="where">TRIUMF</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="publications">
+      <h2 id="publications">Publications</h2>
+      <ul class="list pubs">
+        <li>
+          <span class="what">A Quantum-Assisted Surrogate for ATLAS Calorimeter Showers</span>
+          <span class="where"><b>L. Zhu</b>, J. Toledo, H. Jia, E. Paquet, R. G. Melko, C. W. Gay, G. Fox, M. Swiatlowski, W. T. Fedorko</span>
+          <span class="where">NeurIPS 2026 Sim2Science Workshop · <a href="https://openreview.net/forum?id=JTKPwobNAh">OpenReview</a></span>
+        </li>
+        <li>
+          <span class="what">The Intermediate Axis Theorem: A Model for the Period and a Phenomenal Explanation</span>
+          <span class="where"><b>L. Zhu</b>*, F. Bubbar* · UBC cIRcle, 2025</span>
+        </li>
+      </ul>
+    </section>
+
+    <footer>Vancouver, BC</footer>
+  </main>
 </body>
 </html>

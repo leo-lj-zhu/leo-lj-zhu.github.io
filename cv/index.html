@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+  <link rel="stylesheet" href="../style.css">
+  <title>CV · Leo Zhu</title>
+</head>
+<body class="cv">
+  <header class="cv-bar">
+    <a href="../">← Leo Zhu</a>
+    <a href="Leo_Zhu_CV.pdf" download>Download PDF</a>
+  </header>
+  <main id="pages" class="cv-pages">
+    <p class="cv-fallback">Loading… If the CV doesn’t appear, <a href="Leo_Zhu_CV.pdf">open the PDF</a>.</p>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    (async () => {
+      const root = document.getElementById('pages');
+      try {
+        pdfjsLib.GlobalWorkerOptions.workerSrc =
+          'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        const pdf = await pdfjsLib.getDocument('Leo_Zhu_CV.pdf').promise;
+        const width = Math.min(root.clientWidth - 32, 850);
+        const dpr = window.devicePixelRatio || 1;
+        root.innerHTML = '';
+        for (let n = 1; n <= pdf.numPages; n++) {
+          const page = await pdf.getPage(n);
+          const base = page.getViewport({ scale: 1 });
+          const vp = page.getViewport({ scale: width / base.width });
+          const wrap = document.createElement('div');
+          wrap.className = 'cv-page';
+          wrap.style.width = vp.width + 'px';
+          wrap.style.height = vp.height + 'px';
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.floor(vp.width * dpr);
+          canvas.height = Math.floor(vp.height * dpr);
+          wrap.appendChild(canvas);
+          root.appendChild(wrap);
+          await page.render({
+            canvasContext: canvas.getContext('2d'),
+            viewport: vp,
+            transform: dpr !== 1 ? [dpr, 0, 0, dpr, 0, 0] : null,
+          }).promise;
+          // Keep PDF hyperlinks clickable.
+          for (const a of await page.getAnnotations()) {
+            if (a.subtype !== 'Link' || !a.url) continue;
+            const [x1, y1, x2, y2] = vp.convertToViewportRectangle(a.rect);
+            const link = document.createElement('a');
+            link.href = a.url;
+            link.className = 'cv-link';
+            link.setAttribute('aria-label', a.url);
+            Object.assign(link.style, {
+              left: Math.min(x1, x2) + 'px', top: Math.min(y1, y2) + 'px',
+              width: Math.abs(x2 - x1) + 'px', height: Math.abs(y2 - y1) + 'px',
+            });
+            wrap.appendChild(link);
+          }
+        }
+      } catch (e) {
+        root.innerHTML = '<p class="cv-fallback">Couldn’t display the CV here. <a href="Leo_Zhu_CV.pdf">Open the PDF</a>.</p>';
+      }
+    })();
+  </script>
+</body>
+</html>
