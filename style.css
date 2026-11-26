@@ -90,12 +90,6 @@ a.what { color: var(--accent); }
 
 .where b { font-weight: 600; color: var(--ink); }
 
-footer {
-  margin-top: 3.5rem;
-  color: var(--muted);
-  font-size: 0.875rem;
-}
-
 @media (min-width: 70rem) {
   .page {
     display: grid;
@@ -103,7 +97,7 @@ footer {
     column-gap: clamp(2rem, 4vw, 4.5rem);
   }
 
-  .intro, .page > footer { grid-column: 1 / -1; }
+  .intro { grid-column: 1 / -1; }
 }
 
 @media (max-width: 480px) {
