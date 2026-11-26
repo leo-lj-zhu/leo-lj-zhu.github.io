@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="only light">
   <meta name="theme-color" content="#ffffff">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -29,8 +30,9 @@
         pdfjsLib.GlobalWorkerOptions.workerSrc =
           'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
         const pdf = await pdfjsLib.getDocument('Leo_Zhu_CV.pdf').promise;
-        const width = Math.min(root.clientWidth - 32, 850);
-        const dpr = window.devicePixelRatio || 1;
+        // Render once at full size; CSS scales each page to fit the viewport.
+        const width = 850;
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
         root.innerHTML = '';
         for (let n = 1; n <= pdf.numPages; n++) {
           const page = await pdf.getPage(n);
@@ -38,8 +40,6 @@
           const vp = page.getViewport({ scale: width / base.width });
           const wrap = document.createElement('div');
           wrap.className = 'cv-page';
-          wrap.style.width = vp.width + 'px';
-          wrap.style.height = vp.height + 'px';
           const canvas = document.createElement('canvas');
           canvas.width = Math.floor(vp.width * dpr);
           canvas.height = Math.floor(vp.height * dpr);
@@ -59,8 +59,10 @@
             link.className = 'cv-link';
             link.setAttribute('aria-label', a.url);
             Object.assign(link.style, {
-              left: Math.min(x1, x2) + 'px', top: Math.min(y1, y2) + 'px',
-              width: Math.abs(x2 - x1) + 'px', height: Math.abs(y2 - y1) + 'px',
+              left: (100 * Math.min(x1, x2) / vp.width) + '%',
+              top: (100 * Math.min(y1, y2) / vp.height) + '%',
+              width: (100 * Math.abs(x2 - x1) / vp.width) + '%',
+              height: (100 * Math.abs(y2 - y1) / vp.height) + '%',
             });
             wrap.appendChild(link);
           }
